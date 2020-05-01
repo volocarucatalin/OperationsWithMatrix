@@ -8,9 +8,12 @@ public class Reader {
 
     public static Matrix readMatrix(File filename) throws IOException {
         BufferedReader bufferedReader = new BufferedReader(new FileReader(filename));
-        int lines =4;
-        int columns=4;
-        int[][] body = new int [lines][columns];
+        String[] firstLine = bufferedReader.readLine().split(" ");
+
+        int lines = Integer.valueOf(firstLine[0]);
+        int columns = Integer.valueOf(firstLine[1]);
+
+        int[][] body = new int[lines][columns];
         for (int i = 0; i < lines; i++) {
             String[] value1 = bufferedReader.readLine().split(" ");
             for (int j = 0; j < columns; j++) {
