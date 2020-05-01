@@ -2,26 +2,22 @@ package catalin;
 
 import java.io.*;
 
+
 public class Reader {
-    File file;
-    BufferedReader bufferedReader ;
 
-    public Reader( File file) throws FileNotFoundException {
-        this.file = file;
-        bufferedReader = new BufferedReader(new FileReader(file));
-    }
 
-    public Reader() {
-    }
-
-    public int[][] readMatrices(int[][] matrix) throws IOException {
-        for (int i = 0; i < 4; i++) {
+    public static Matrix readMatrix(File filename) throws IOException {
+        BufferedReader bufferedReader = new BufferedReader(new FileReader(filename));
+        int lines =4;
+        int columns=4;
+        int[][] body = new int [lines][columns];
+        for (int i = 0; i < lines; i++) {
             String[] value1 = bufferedReader.readLine().split(" ");
-            for (int j = 0; j < 4; j++) {
+            for (int j = 0; j < columns; j++) {
                 int valueInteger1 = Integer.parseInt(value1[j]);
-                matrix[i][j] = valueInteger1;
+                body[i][j] = valueInteger1;
             }
         }
-       return matrix;
+        return new Matrix(lines, columns, body);
     }
 }

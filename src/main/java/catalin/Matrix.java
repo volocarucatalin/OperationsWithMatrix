@@ -1,33 +1,37 @@
 package catalin;
 
-public class Matrix {
+public class Matrix implements Operations {
+    public int lines;
+    public int columns;
+    public int[][] body;
 
-    public int[][] multiplication(int[][] matrix1, int[][] matrix2) {
-        int[][] matrixMultiplication = new int[4][4];
-        for (int i = 0; i < matrix1.length; i++) {
-            for (int j = 0; j < matrix2.length; j++) {
-                int a;
-                int b = matrix1[i][j];
-                int c = matrix2[i][j];
-                a = (b * c);
-                matrixMultiplication[i][j] = a;
-            }
-        }
-        return matrixMultiplication;
+    public Matrix(int lines, int columns, int[][] body) {
+        this.body = body;
     }
 
-    public int[][] sum(int[][] matrix1, int[][] matrix2) {
-        int[][] matrixSum = new int[4][4];
-        for (int i = 0; i < matrix1.length; i++) {
-            for (int j = 0; j < matrix2.length; j++) {
-                int a;
-                int b = matrix1[i][j];
-                int c = matrix2[i][j];
-                a = (b + c);
-                matrixSum[i][j] = a;
+    public Matrix multiplication(Matrix matrix) {
+        int[][] matrixMultiplication = new int[lines][columns];
+        for (int i = 0; i < lines; i++) {
+            for (int j = 0; j < columns; j++) {
+                matrixMultiplication[i][j] = matrix.body[i][j] + body[i][j];
             }
+
         }
-        return matrixSum;
+        return new Matrix(lines,columns,matrixMultiplication);
     }
 
+    public Matrix sum(Matrix matrix) {
+        int[][] matrixSum = new int[lines][columns];
+        for (int i = 0; i < lines; i++) {
+            for (int j = 0; j < columns; j++) {
+                matrixSum[i][j] =  matrix.body[i][j] + body[i][j] ;
+            }
+        }
+        return new Matrix(lines , columns , matrixSum);
+    }
+
+
+    public int[][] getBody() {
+        return body;
+    }
 }
