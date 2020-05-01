@@ -1,6 +1,6 @@
 package catalin;
 
 public interface Operations {
-    Matrix sum(Matrix matrix1);
-    Matrix multiplication(Matrix matrix1);
+    Matrix sum(Matrix matrix);
+    Matrix multiplication(Matrix matrix);
 }

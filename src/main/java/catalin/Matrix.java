@@ -9,22 +9,22 @@ public class Matrix implements Operations {
         this.body = body;
     }
 
-    public Matrix multiplication(Matrix matrix1) {
+    public Matrix multiplication(Matrix matrix) {
         int[][] matrixMultiplication = new int[lines][columns];
         for (int i = 0; i < lines; i++) {
             for (int j = 0; j < columns; j++) {
-                matrixMultiplication[i][j] = matrix1.body[i][j] + body[i][j];
+                matrixMultiplication[i][j] = matrix.body[i][j] + body[i][j];
             }
 
         }
         return new Matrix(lines,columns,matrixMultiplication);
     }
 
-    public Matrix sum(Matrix matrix1) {
+    public Matrix sum(Matrix matrix) {
         int[][] matrixSum = new int[lines][columns];
         for (int i = 0; i < lines; i++) {
             for (int j = 0; j < columns; j++) {
-                matrixSum[i][j] =  matrix1.body[i][j] + body[i][j] ;
+                matrixSum[i][j] =  matrix.body[i][j] + body[i][j] ;
             }
         }
         return new Matrix(lines , columns , matrixSum);

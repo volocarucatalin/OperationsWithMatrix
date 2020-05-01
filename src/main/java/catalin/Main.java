@@ -12,8 +12,8 @@ public class Main {
         int[][] matrixAddition = new int[4][4];
         int[][] matrixMultiply = new int[4][4];
 
-        Matrix matrix1 = new Reader().readMatrices(fileMatrix1);
-        Matrix matrix2 = new Reader().readMatrices(fileMatrix2);
+        Matrix matrix1 = Reader.readMatrix(fileMatrix1);
+        Matrix matrix2 = Reader.readMatrix(fileMatrix2);
         matrixAddition = matrix1.multiplication(matrix2).getBody();
         matrixMultiply = matrix1.sum(matrix2).getBody();
 
