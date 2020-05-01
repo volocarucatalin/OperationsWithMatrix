@@ -2,6 +2,8 @@ package catalin;
 
 import java.io.*;
 
+import static java.lang.Integer.*;
+
 
 public class Reader {
 
@@ -10,14 +12,14 @@ public class Reader {
         BufferedReader bufferedReader = new BufferedReader(new FileReader(filename));
         String[] firstLine = bufferedReader.readLine().split(" ");
 
-        int lines = Integer.valueOf(firstLine[0]);
-        int columns = Integer.valueOf(firstLine[1]);
+        int lines = valueOf(firstLine[0]);
+        int columns = valueOf(firstLine[1]);
 
         int[][] body = new int[lines][columns];
         for (int i = 0; i < lines; i++) {
             String[] value1 = bufferedReader.readLine().split(" ");
             for (int j = 0; j < columns; j++) {
-                int valueInteger1 = Integer.parseInt(value1[j]);
+                int valueInteger1 = valueOf(value1[j]);
                 body[i][j] = valueInteger1;
             }
         }
