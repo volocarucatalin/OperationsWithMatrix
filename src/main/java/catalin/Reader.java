@@ -1,27 +1,23 @@
 package catalin;
 
 import java.io.*;
+import java.util.regex.MatchResult;
 
 public class Reader {
-    File file;
-    BufferedReader bufferedReader ;
+    File filename;
+    int lines;
+    int columns;
+    int[][] body;
 
-    public Reader( File file) throws FileNotFoundException {
-        this.file = file;
-        bufferedReader = new BufferedReader(new FileReader(file));
-    }
-
-    public Reader() {
-    }
-
-    public int[][] readMatrices(int[][] matrix) throws IOException {
-        for (int i = 0; i < 4; i++) {
+    public Matrix readMatrices(File filename) throws IOException {
+        BufferedReader bufferedReader = new BufferedReader(new FileReader(filename));
+        for (int i = 0; i < lines; i++) {
             String[] value1 = bufferedReader.readLine().split(" ");
-            for (int j = 0; j < 4; j++) {
+            for (int j = 0; j < columns; j++) {
                 int valueInteger1 = Integer.parseInt(value1[j]);
-                matrix[i][j] = valueInteger1;
+                body[i][j] = valueInteger1;
             }
         }
-       return matrix;
+       return new Matrix(lines,columns,body);
     }
 }
