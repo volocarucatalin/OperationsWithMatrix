@@ -1,7 +1,6 @@
 package catalin;
-
 import java.io.*;
-import java.util.Arrays;
+
 
 public class Main {
 
@@ -15,13 +14,12 @@ public class Main {
 
         Reader file1 = new Reader(fileMatrix1);
         Reader file2 = new Reader(fileMatrix2);
-        MultiplyMatrix multiply = new MultiplyMatrix();
-        AdderMatrix sum = new AdderMatrix();
+        Matrix operation = new Matrix();
         matrixOne = file1.readMatrices(matrixOne);
         matrixTwo = file2.readMatrices(matrixTwo);
 
-        matrixAddition = sum.sum(matrixOne,matrixTwo);
-        matrixMultiply = multiply.multiplication(matrixOne,matrixTwo);
+        matrixAddition = operation.sum(matrixOne,matrixTwo);
+        matrixMultiply = operation.multiplication(matrixOne,matrixTwo);
 
 
 
