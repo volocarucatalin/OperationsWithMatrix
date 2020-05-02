@@ -17,7 +17,7 @@ public class Matrix implements Operations {
         int[][] matrixMultiplication = new int[lines][columns];
         for (int i = 0; i < lines; i++) {
             for (int j = 0; j < columns; j++) {
-                matrixMultiplication[i][j] = matrix.body[i][j] + body[i][j];
+                matrixMultiplication[i][j] = matrix.body[i][j] * body[i][j];
             }
 
         }
