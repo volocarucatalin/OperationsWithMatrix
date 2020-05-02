@@ -8,24 +8,23 @@ import java.io.IOException;
 public class Writer {
 
     public static void writeMatrix(File fileName, Matrix matrix) {
-        try {
+        try (FileWriter fileWriter = new FileWriter(fileName.getAbsoluteFile(), true);) {
 
-            FileWriter bufferedWriter = new FileWriter(fileName.getAbsoluteFile(), true);
 
-            bufferedWriter.write(matrix.getLines() + " " + matrix.getColumns());
-            bufferedWriter.write("\n");
+            fileWriter.write(matrix.getLines() + " " + matrix.getColumns());
+            fileWriter.write("\n");
 
             for (int i = 0; i < matrix.getColumns(); i++) {
                 for (int j = 0; j < matrix.getLines(); j++) {
-                    bufferedWriter.write(matrix.getBody()[i][j] + " ");
+                    fileWriter.write(matrix.getBody()[i][j] + " ");
                 }
-                bufferedWriter.write("\n");
-                bufferedWriter.flush();
+                fileWriter.write("\n");
+                fileWriter.flush();
 
             }
 
-            bufferedWriter.write("\n");
-            bufferedWriter.flush();
+            fileWriter.write("\n");
+            fileWriter.flush();
 
 
         } catch (IOException ignored) {
