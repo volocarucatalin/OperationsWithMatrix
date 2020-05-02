@@ -13,18 +13,28 @@ public class Matrix implements Operations {
         this.body = body;
     }
 
-    public Matrix multiplication(Matrix matrix) {
-        int[][] matrixMultiplication = new int[lines][columns];
+
+    public Matrix multiplication(Matrix matrix) throws Exception {
+        if (columns != matrix.getLines()) {
+            throw new Exception("This matrices can't be multiplied");
+        }
+        int[][] result = new int[lines][matrix.getColumns()];
         for (int i = 0; i < lines; i++) {
-            for (int j = 0; j < columns; j++) {
-                matrixMultiplication[i][j] = matrix.body[i][j] * body[i][j];
+            for (int j = 0; j < matrix.getColumns(); j++) {
+                result[i][j] = 0;
+                for (int k = 0; k < columns; k++) {
+                    result[i][j] = result[i][j] + body[i][k] * matrix.body[k][j];
+                }
             }
 
         }
-        return new Matrix(lines, columns, matrixMultiplication);
+        return new Matrix(lines, matrix.getColumns(), result);
     }
 
-    public Matrix sum(Matrix matrix) {
+    public Matrix sum(Matrix matrix) throws Exception {
+        if (columns != matrix.getColumns() || lines != matrix.getLines()) {
+            throw new Exception("This matrices can't be sum");
+        }
         int[][] matrixSum = new int[lines][columns];
         for (int i = 0; i < lines; i++) {
             for (int j = 0; j < columns; j++) {
@@ -63,4 +73,11 @@ public class Matrix implements Operations {
                 columns == matrix.columns;
     }
 
+    public int getLines() {
+        return lines;
+    }
+
+    public int getColumns() {
+        return columns;
+    }
 }
