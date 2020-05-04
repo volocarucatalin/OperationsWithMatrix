@@ -14,9 +14,9 @@ public class Matrix implements Operations {
     }
 
 
-    public Matrix multiplication(Matrix matrix) throws Exception {
+    public Matrix multiplication(Matrix matrix)  {
         if (columns != matrix.getLines()) {
-            throw new Exception("This matrices can't be multiplied");
+            throw new MatrixException("This matrices can't be multiplied");
         }
         int[][] result = new int[lines][matrix.getColumns()];
         for (int i = 0; i < lines; i++) {
@@ -31,9 +31,9 @@ public class Matrix implements Operations {
         return new Matrix(lines, matrix.getColumns(), result);
     }
 
-    public Matrix sum(Matrix matrix) throws Exception {
+    public Matrix sum(Matrix matrix)  {
         if (columns != matrix.getColumns() || lines != matrix.getLines()) {
-            throw new Exception("This matrices can't be sum");
+            throw new MatrixException("This matrices can't be sum");
         }
         int[][] matrixSum = new int[lines][columns];
         for (int i = 0; i < lines; i++) {
